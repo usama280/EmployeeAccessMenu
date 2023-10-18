@@ -1,3 +1,4 @@
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 import java.util.*;
 
@@ -66,7 +67,7 @@ public class Driver {
 			BufferedReader br1 = new BufferedReader(new FileReader(compPath));
 			String line;
 			//adds current comp codes and disc onto hashmap
-			while ((line = br1.readLine()) != null)
+			while ((line = BoundedLineReader.readLine(br1, 5_000_000)) != null)
 		    {
 		        String[] parts = line.split(",", 2);//splits
 		        if (parts.length >= 2) 
@@ -79,7 +80,7 @@ public class Driver {
 			BufferedReader br2 = new BufferedReader(new FileReader(jobPath));
 			String line2;
 			//adds current job codes and disc onto hashmap
-			while ((line2 = br2.readLine()) != null)
+			while ((line2 = BoundedLineReader.readLine(br2, 5_000_000)) != null)
 		    {
 		        String[] parts = line2.split(",", 2);//splits
 		        if (parts.length >= 2) 
@@ -92,7 +93,7 @@ public class Driver {
 			BufferedReader br3 = new BufferedReader(new FileReader(workPath));
 			String line3;
 			//adds current workorders onto list
-			while ((line3 = br3.readLine()) != null)
+			while ((line3 = BoundedLineReader.readLine(br3, 5_000_000)) != null)
 		    {
 		        String[] parts = line3.split(",", 3); //splits vals
 		        if (parts.length >= 3) 
